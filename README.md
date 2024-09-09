@@ -1,6 +1,8 @@
 # TeetoDots
 Just my hyprland dot files and install script.
 
+THIS REPO IS NOT YET FUNCTIONAL I AM ACTIVELY WORKING ON IT RIGHT NOW, THE DOT FILES ARE SET IN STONE THOUGH BUT THE SCRIPT IS NOT
+
 WARNING: 
   This repo is for my personal use but feel welcome to use these dotfiles or modify them to suit your needs.
   However, since this repo is mainly used as a way for me to quickly install my hyprland configuration on a new
