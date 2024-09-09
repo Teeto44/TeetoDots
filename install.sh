@@ -1,1 +1,1 @@
-cp -rT test/ ~/.config/
+cp -rT .config/ ~/.config/
