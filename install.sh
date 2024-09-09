@@ -1,0 +1,1 @@
+cp -rT test/ ~/.config/
