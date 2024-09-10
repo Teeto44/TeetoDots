@@ -1,2 +1,50 @@
-cp -rT .config/ ~/.config/
-yes | pacman -S firefox polkit-kde-agent nwg-look rofi-wayland unzip waybar thunar pipewire-pulse pavucontrol fastfetch
+packages=(
+    firefox
+    polkit-kde-agent
+    nwg-look
+    rofi-wayland
+    unzip
+    waybar
+    thunar
+    pipewire-pulse
+    pavucontrol
+    fastfetch
+    ttf-jetbrains-mono-nerd
+)
+
+# Prompt the user for a yes or no answer
+read -p "Would you like to install the Required Packages? (y/n): "  answerPackages
+
+# Convert the answer to lowercase
+answerPackages=$(echo "$answerPackages" | tr '[:upper:]' '[:lower:]')
+
+# Check the user's response for configuration installation
+if [[ "$answerPackages" == "y" || "$answerPackages" == "yes" ]]; then
+    # Update the package database and install the packages
+    sudo pacman -Syu --noconfirm "${packages[@]}"
+    # Confirm Completion
+    echo "All packages have been installed successfully."
+elif [[ "$answerPackages" == "n" || "$answerPackages" == "no" ]]; then
+    echo "No packages were installed."
+else
+    # Check if user, selected not select a valid option and prompt again
+    echo "Invalid response. Please answer with 'y' or 'n'. Now exiting"
+    exit 0
+fi
+
+# Prompt the user for a yes or no answer
+read -p "Would you like to install the Configs? (y/n): "  answerConfigs
+
+# Convert the answer to lowercase
+answer=$(echo "$answerConfigs" | tr '[:upper:]' '[:lower:]')
+
+# Check the user's response for configuration installation
+if [[ "$answerConfigs" == "y" || "$answerConfigs" == "yes" ]]; then
+    cp -rT .config/ ~/.config/
+elif [[ "$answerConfigs" == "n" || "$answerConfigs" == "no" ]]; then
+    echo "No Configs were installed."
+    exit 0
+else
+    echo "Invalid response. Please answer with 'y' or 'n'. Now exiting"
+    exit 0
+fi
