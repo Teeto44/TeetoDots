@@ -9,6 +9,7 @@ packages=(
     pipewire-pulse
     pavucontrol
     fastfetch
+    blueman
     ttf-jetbrains-mono-nerd
 )
 
@@ -43,8 +44,26 @@ if [[ "$answerConfigs" == "y" || "$answerConfigs" == "yes" ]]; then
     cp -rT .config/ ~/.config/
 elif [[ "$answerConfigs" == "n" || "$answerConfigs" == "no" ]]; then
     echo "No Configs were installed."
+else
+    echo "Invalid response. Please answer with 'y' or 'n'. Now exiting"
+    exit 0
+fi
+
+# Prompt the user for a yes or no answer
+read -p "Would you like to install the Cattpuccino GTK Theme? (y/n): "  answerThemes
+
+# Convert the answer to lowercase
+answer=$(echo "$answerThemes" | tr '[:upper:]' '[:lower:]')
+
+# Check the user's response for configuration installation
+if [[ "$answerThemes" == "y" || "$answerThemes" == "yes" ]]; then
+    cp -rT Themes/ /usr/share/themes/
+elif [[ "$answerThemes" == "n" || "$answerThemes" == "no" ]]; then
+    echo "No Themes were installed."
     exit 0
 else
     echo "Invalid response. Please answer with 'y' or 'n'. Now exiting"
     exit 0
 fi
+
+exit 0
